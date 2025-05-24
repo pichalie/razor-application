@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: razor-application
+  name: razor-application
+spec:
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      name: web-http     
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: razor-application

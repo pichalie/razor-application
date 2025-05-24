@@ -1,0 +1,23 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: razor-application
+  name: razor-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: razor-application
+  template:
+    metadata:
+      labels:
+        app: razor-application
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/test-dotnet/razor-application:latest
+          imagePullPolicy: Always
+          name: razor-application
+          ports:
+            - containerPort: 8080
+              protocol: TCP
