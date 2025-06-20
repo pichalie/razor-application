@@ -18,6 +18,8 @@ COPY . .
 WORKDIR "/src/."
 RUN dotnet build "./razor-application.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
+RUN dotnet test "unit-tests/unit-tests.csproj" 
+
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
